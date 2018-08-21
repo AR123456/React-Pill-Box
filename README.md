@@ -1,2 +1,3 @@
 # blogger
-Blog app with MySQL DB 
+
+## Blog app with MySQL DB
