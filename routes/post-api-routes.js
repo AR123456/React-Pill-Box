@@ -1,17 +1,13 @@
 var db = require("../models");
 
 module.exports = function(app) {
-  app.get("/api/posts/", function(req, res) {
-    db.Post.findAll({}).then(function(dbPost) {
-      res.json(dbPost);
-    });
-  });
-
-  app.get("/api/posts/category/:category", function(req, res) {
+  app.get("/api/posts", function(req, res) {
+    var query = {};
+    if (req.query.author_id) {
+      query.AuthorId = req.query.author_id;
+    }
     db.Post.findAll({
-      where: {
-        category: req.params.category
-      }
+      where: query
     }).then(function(dbPost) {
       res.json(dbPost);
     });
@@ -23,17 +19,13 @@ module.exports = function(app) {
         id: req.params.id
       }
     }).then(function(dbPost) {
+      console.log(dbPost);
       res.json(dbPost);
     });
   });
 
   app.post("/api/posts", function(req, res) {
-    console.log(req.body);
-    db.Post.create({
-      title: req.body.title,
-      body: req.body.body,
-      category: req.body.category
-    }).then(function(dbPost) {
+    db.Post.create(req.body).then(function(dbPost) {
       res.json(dbPost);
     });
   });

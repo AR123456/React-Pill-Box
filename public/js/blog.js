@@ -1,21 +1,31 @@
 $(document).ready(function() {
+  var blogContainer = $(".blog-container");
   var postCategorySelect = $("#category");
 
   $(document).on("click", "button.delete", handlePostDelete);
   $(document).on("click", "button.edit", handlePostEdit);
-  postCategorySelect.on("change", handleCategoryChange);
+
   var posts;
 
-  function getPosts(category) {
-    var categoryString = category || "";
-    if (categoryString) {
-      categoryString = "/category/" + categoryString;
+  var url = window.location.search;
+  var authorId;
+  if (url.indexOf("?author_id=") !== -1) {
+    authorId = url.split("=")[1];
+    getPosts(authorId);
+  } else {
+    getPosts();
+  }
+
+  function getPosts(author) {
+    authorId = author || "";
+    if (authorId) {
+      authorId = "/?author_id=" + authorId;
     }
-    $.get("/api/posts" + categoryString, function(data) {
+    $.get("/api/posts" + authorId, function(data) {
       console.log("Posts", data);
       posts = data;
       if (!posts || !posts.length) {
-        displayEmpty();
+        displayEmpty(author);
       } else {
         initializeRows();
       }
@@ -31,8 +41,6 @@ $(document).ready(function() {
     });
   }
 
-  getPosts();
-
   function initializeRows() {
     blogContainer.empty();
     var postsToAdd = [];
@@ -43,6 +51,8 @@ $(document).ready(function() {
   }
 
   function createNewRow(post) {
+    var formattedDate = new Date(post.createdAt);
+    formattedDate = moment(formattedDate).format("MMMM Do YYYY, h:mm:ss a");
     var newPostPanel = $("<div>");
     newPostPanel.addClass("panel panel-default");
     var newPostPanelHeading = $("<div>");
@@ -52,29 +62,27 @@ $(document).ready(function() {
     deleteBtn.addClass("delete btn btn-danger");
     var editBtn = $("<button>");
     editBtn.text("EDIT");
-    editBtn.addClass("edit btn btn-default");
+    editBtn.addClass("edit btn btn-info");
     var newPostTitle = $("<h2>");
     var newPostDate = $("<small>");
-    var newPostCategory = $("<h5>");
-    newPostCategory.text(post.category);
-    newPostCategory.css({
+    var newPostAuthor = $("<h5>");
+    newPostAuthor.text("Written by: Author name display will appear here ");
+    newPostAuthor.css({
       float: "right",
-      "font-weight": "700",
-      "margin-top": "-15px"
+      color: "blue",
+      "margin-top": "-10px"
     });
     var newPostPanelBody = $("<div>");
     newPostPanelBody.addClass("panel-body");
     var newPostBody = $("<p>");
     newPostTitle.text(post.title + " ");
     newPostBody.text(post.body);
-    var formattedDate = new Date(post.createdAt);
-    formattedDate = moment(formattedDate).format("MMMM Do YYYY, h:mm:ss a");
     newPostDate.text(formattedDate);
     newPostTitle.append(newPostDate);
     newPostPanelHeading.append(deleteBtn);
     newPostPanelHeading.append(editBtn);
     newPostPanelHeading.append(newPostTitle);
-    newPostPanelHeading.append(newPostCategory);
+    newPostPanelHeading.append(newPostAuthor);
     newPostPanelBody.append(newPostBody);
     newPostPanel.append(newPostPanelHeading);
     newPostPanel.append(newPostPanelBody);
@@ -98,18 +106,22 @@ $(document).ready(function() {
     window.location.href = "/cms?post_id=" + currentPost.id;
   }
 
-  function displayEmpty() {
+  function displayEmpty(id) {
+    var query = window.location.search;
+    var partial = "";
+    if (id) {
+      partial = " for Author #" + id;
+    }
     blogContainer.empty();
     var messageh2 = $("<h2>");
     messageh2.css({ "text-align": "center", "margin-top": "50px" });
     messageh2.html(
-      "No posts yet for this category, navigate <a href='/cms'>here</a> in order to create a new post."
+      "No posts yet" +
+        partial +
+        ", navigate <a href='/cms" +
+        query +
+        "'>here</a> in order to get started."
     );
     blogContainer.append(messageh2);
-  }
-
-  function handleCategoryChange() {
-    var newPostCategory = $(this).val();
-    getPosts(newPostCategory);
   }
 });
