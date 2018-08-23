@@ -2,7 +2,9 @@ var db = require("../models");
 
 module.exports = function(app) {
   app.get("/api/authors", function(req, res) {
-    db.Author.findAll({}).then(function(dbAuthor) {
+    db.Author.findAll({
+      include: [db.Post]
+    }).then(function(dbAuthor) {
       res.json(dbAuthor);
     });
   });
@@ -11,14 +13,14 @@ module.exports = function(app) {
     db.Author.findOne({
       where: {
         id: req.params.id
-      }
+      },
+      include: [db.post]
     }).then(function(dbAuthor) {
       res.json(dbAuthor);
     });
   });
 
   app.post("/api/authors", function(req, res) {
-    console.log(req.body);
     db.Author.create(req.body).then(function(dbAuthor) {
       res.json(dbAuthor);
     });

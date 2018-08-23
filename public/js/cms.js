@@ -85,6 +85,7 @@ $(document).ready(function() {
     if (!data.length) {
       window.location.href = "/authors";
     }
+    $(".hidden").removeClass("hidden");
     var rowsToAdd = [];
     for (var i = 0; i < data.length; i++) {
       rowsToAdd.push(createAuthorRow(data[i]));

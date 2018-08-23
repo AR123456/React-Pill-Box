@@ -6,8 +6,10 @@ module.exports = function(app) {
     if (req.query.author_id) {
       query.AuthorId = req.query.author_id;
     }
+
     db.Post.findAll({
-      where: query
+      where: query,
+      include: [db.Author]
     }).then(function(dbPost) {
       res.json(dbPost);
     });
@@ -17,7 +19,8 @@ module.exports = function(app) {
     db.Post.findOne({
       where: {
         id: req.params.id
-      }
+      },
+      include: [db.Author]
     }).then(function(dbPost) {
       console.log(dbPost);
       res.json(dbPost);

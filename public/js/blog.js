@@ -66,7 +66,7 @@ $(document).ready(function() {
     var newPostTitle = $("<h2>");
     var newPostDate = $("<small>");
     var newPostAuthor = $("<h5>");
-    newPostAuthor.text("Written by: Author name display will appear here ");
+    newPostAuthor.text("Written by: " + post.Author.name);
     newPostAuthor.css({
       float: "right",
       color: "blue",

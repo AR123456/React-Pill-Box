@@ -30,11 +30,10 @@ $(document).ready(function() {
   }
 
   function createAuthorRow(authorData) {
-    console.log(authorData);
     var newTr = $("<tr>");
     newTr.data("author", authorData);
     newTr.append("<td>" + authorData.name + "</td>");
-    newTr.append("<td># of posts will display here</td>");
+    newTr.append("<td> " + authorData.Posts.length + "</td>");
     newTr.append(
       "<td><a href='/blog?author_id=" + authorData.id + "'>Go to Posts</a></td>"
     );
