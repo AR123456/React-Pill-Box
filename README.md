@@ -1,5 +1,5 @@
-# React Pill Box 
+# React Pill Box
 
-## Medication managment and reminder
+## Medication Management and Reminders
 
 ### Deployed app at https://tranquil-waters-69337.herokuapp.com/
