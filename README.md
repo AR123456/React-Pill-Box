@@ -1,5 +1,5 @@
-# blogger
+# React Pill Box 
 
-## Blog app with MySQL DB
+## Medication managment and reminder
 
 ### Deployed app at https://tranquil-waters-69337.herokuapp.com/
