@@ -1,10 +1,15 @@
 import React from "react";
+import { Nav } from "react-bootstrap";
 
 const Footer = () => {
   return (
-    <div>
-      <h2>Footer here</h2>
-    </div>
+    <>
+      <Nav fixed="bottom" className="justify-content-center" activeKey="/home">
+        <Nav.Item>
+          <Nav.Link eventKey="link-1">About My Pill Box </Nav.Link>
+        </Nav.Item>
+      </Nav>
+    </>
   );
 };
 
