@@ -1,11 +1,15 @@
-import logo from "./logo.svg";
-import "./App.css";
+import { BrowserRouter as Router, Route } from "react-router-dom";
+import { Container } from "react-bootstrap";
+import Header from "./components/Header";
 
 function App() {
   return (
-    <div className="App">
-      <h1>My Pill box </h1>
-    </div>
+    <Router className="App">
+      <Header />
+      <Container>
+        <h2>My Pill Box </h2>
+      </Container>
+    </Router>
   );
 }
 
