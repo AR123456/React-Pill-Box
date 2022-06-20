@@ -16,21 +16,15 @@ const HomeScreen = () => {
           <ListGroup>
             <ListGroupItem>
               {" "}
-              <Button className="btn-pillBox" variant="primary">
-                Log In
-              </Button>
+              <Button variant="primary">Log In</Button>
             </ListGroupItem>
             <ListGroupItem>
               {" "}
-              <Button className="btn-pillBox" variant="primary">
-                SignUp - New Users
-              </Button>
+              <Button variant="primary">SignUp - New Users</Button>
             </ListGroupItem>
             <ListGroupItem>
               {" "}
-              <Button className="btn-pillBox" variant="primary">
-                Log Out
-              </Button>
+              <Button variant="primary">Log Out</Button>
             </ListGroupItem>
           </ListGroup>
         </Card.Body>

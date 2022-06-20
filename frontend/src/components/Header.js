@@ -17,11 +17,14 @@ const Header = () => {
         <Container>
           <Navbar.Brand href="#home">My Pill Box </Navbar.Brand>
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
-          <Navbar.Collapse id="basic-navbar-nav">
-            <Nav className="me-auto">
+          <Navbar.Collapse id="basic-navbar-nav" className="navbar-light">
+            <Nav className="me-auto ">
               <Nav.Link href="#home">Home</Nav.Link>
+
               <Nav.Link href="#link">My Pill Box</Nav.Link>
+
               <Nav.Link href="#link">Medications</Nav.Link>
+
               <Nav.Link href="#link">SignUp</Nav.Link>
             </Nav>
             <Nav className="justify-content-end">
