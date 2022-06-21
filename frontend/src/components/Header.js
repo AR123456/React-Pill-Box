@@ -1,5 +1,5 @@
 import React from "react";
-// import { Route } from "react-router-dom";
+import { Link } from "react-router-dom";
 import {
   Navbar,
   Nav,
@@ -15,15 +15,15 @@ const Header = () => {
     <>
       <Navbar bg="light" expand="lg">
         <Container>
-          <Navbar.Brand href="#home">My Pill Box </Navbar.Brand>
+          <Navbar.Brand href="/">My Pill Box </Navbar.Brand>
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
           <Navbar.Collapse id="basic-navbar-nav" className="navbar-light">
             <Nav className="me-auto ">
-              <Nav.Link href="#home">Home</Nav.Link>
+              <Nav.Link href="/">Home</Nav.Link>
 
-              <Nav.Link href="#link">My Pill Box</Nav.Link>
+              <Nav.Link href="/pillbox">My Pill Box</Nav.Link>
 
-              <Nav.Link href="#link">Medications</Nav.Link>
+              <Nav.Link href="/medlist">Medications</Nav.Link>
 
               <Nav.Link href="#link">SignUp</Nav.Link>
             </Nav>
