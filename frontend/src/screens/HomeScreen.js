@@ -1,5 +1,5 @@
 import React from "react";
-import { Card, Button, ListGroup, ListGroupItem } from "react-bootstrap";
+import { Card, Button, ListGroup, ListGroupItem, Nav } from "react-bootstrap";
 
 const HomeScreen = () => {
   return (
@@ -18,15 +18,15 @@ const HomeScreen = () => {
             <ListGroup>
               <ListGroupItem>
                 {" "}
-                <Button variant="primary">Log In</Button>
+                <Nav.Link href="/signin">Sign In</Nav.Link>
               </ListGroupItem>
               <ListGroupItem>
                 {" "}
-                <Button variant="primary">SignUp - New Users</Button>
+                <Nav.Link href="/signup">Sign Up New Users</Nav.Link>
               </ListGroupItem>
               <ListGroupItem>
                 {" "}
-                <Button variant="primary">Log Out</Button>
+                <Nav.Link href="/signin">Log Out</Nav.Link>
               </ListGroupItem>
             </ListGroup>
           </Card.Body>

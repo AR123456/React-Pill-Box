@@ -25,7 +25,8 @@ const Header = () => {
 
               <Nav.Link href="/medlist">Medications</Nav.Link>
 
-              <Nav.Link href="#link">SignUp</Nav.Link>
+              <Nav.Link href="/signup">Sign Up</Nav.Link>
+              <Nav.Link href="/signin">Sign In</Nav.Link>
             </Nav>
             <Nav className="justify-content-end">
               {/* <Form className="d-flex">
@@ -41,15 +42,10 @@ const Header = () => {
               <Navbar.Text>
                 Signed in as: <a href="#login">John Doe</a>
               </Navbar.Text>
-              {/* <Button>
-              if not logged in 
-                {" "}
-                <Nav.Link href="#link">Sign In </Nav.Link>
-              </Button>
-              <Button>
-                {" "}
-                <Nav.Link href="#link">Sign Up </Nav.Link>
-              </Button> */}
+              {/* if not logged in  */}{" "}
+              {/*  <Nav.Link href="/signin">SignUp</Nav.Link> logged in show  */}
+              <Nav.Link href="/signin">Sign Out </Nav.Link>{" "}
+              {/* <Nav.Link href="#link">Sign Up </Nav.Link> */}
             </Nav>
           </Navbar.Collapse>
         </Container>

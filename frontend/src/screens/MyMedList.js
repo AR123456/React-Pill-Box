@@ -67,6 +67,7 @@ const MyMedList = () => {
               </Form.Label>
               {/* <Form.Control type="select" placeholder="Strength of pill" /> */}
               <Form.Select type="select" placeholder="Strength of pill">
+                <option>Select units</option>
                 <option>mg</option>
                 <option>ml</option>
                 <option>unit</option>
@@ -85,6 +86,7 @@ const MyMedList = () => {
               <Form.Label>Time of Day </Form.Label>
               {/* <Form.Control type="select" placeholder="Time of day" /> */}
               <Form.Select type="select" placeholder="Time of day">
+                <option>Select time</option>
                 <option>Morning</option>
                 <option>Lunch Time</option>
                 <option>Dinner Time</option>
@@ -100,11 +102,36 @@ const MyMedList = () => {
           <div className="jumbotron">
             <h1>Deactivated Medications/Medication History</h1>
           </div>
-          <Card.Header>Advil</Card.Header>
-          <Card.Header>Tylenol</Card.Header>
-          <Card.Header>Benadryl</Card.Header>
-          <Card.Header>Lipitor</Card.Header>
-          <Card.Header>Lisinopril</Card.Header>
+          <Card.Header>
+            <Row>
+              <Col> Advil</Col>
+              <Col>Stopped: January 1, 2021</Col>
+            </Row>
+          </Card.Header>
+          <Card.Header>
+            <Row>
+              <Col>Tylenol</Col>
+              <Col>Stopped: March 1, 2022</Col>
+            </Row>
+          </Card.Header>
+          <Card.Header>
+            <Row>
+              <Col>Benadryl</Col>
+              <Col>Stopped: June 1, 2022</Col>
+            </Row>
+          </Card.Header>
+          <Card.Header>
+            <Row>
+              <Col>Lipitor</Col>
+              <Col>Stopped: May 5,2019</Col>
+            </Row>
+          </Card.Header>
+          <Card.Header>
+            <Row>
+              <Col>Lisinopril</Col>
+              <Col>Stopped: April 22, 3018</Col>
+            </Row>
+          </Card.Header>
         </Container>
       </Container>
 

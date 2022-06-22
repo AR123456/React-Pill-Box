@@ -21,7 +21,7 @@ const MyPillBox = () => {
                 <Card.Title>Morning</Card.Title>
               </Card.Header>
               <Card.Body>
-                <Card.Text>Med:</Card.Text>
+                <Card.Text>Med: Lasix</Card.Text>
 
                 <Button variant="primary">Mark taken today !</Button>
                 <Card.Text>Last Marked taken at :</Card.Text>
@@ -69,7 +69,7 @@ const MyPillBox = () => {
                 <Card.Title>Before Bed </Card.Title>
               </Card.Header>
               <Card.Body>
-                <Card.Text>Med:</Card.Text>
+                <Card.Text>Med: Crestor</Card.Text>
                 <Button variant="primary">Mark taken today !</Button>
                 <Card.Text>Last Marked taken at :</Card.Text>
                 <Button variant="primary">Get Medication information </Button>
