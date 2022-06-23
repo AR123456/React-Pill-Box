@@ -2,6 +2,7 @@ import React from "react";
 import { Form, Container, Button, Row } from "react-bootstrap";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
+import { GiPill } from "react-icons/gi";
 
 const LoginScreen = () => {
   return (
@@ -36,17 +37,19 @@ const LoginScreen = () => {
               How many pills do you see ?
             </Form.Text>
             <Form.Text className="text-muted">
-              <i class="fa-solid fa-capsules fa-2xl"></i>
-              <br />
-              <i class="fa-solid fa-capsules fa-2xl"></i>
-              <br />
-              <i class="fa-solid fa-capsules fa-2xl"></i>
+              <GiPill size="5em"></GiPill>
+
+              <GiPill size="5em"></GiPill>
+
+              <GiPill size="5em"></GiPill>
+
+              <GiPill size="5em"></GiPill>
             </Form.Text>
           </Row>
           <Form.Group className="mb-3">
             <Form.Label>Answer is: </Form.Label>
             <Form.Control type="text" placeholder="Answer is" />
-            {/* only allow the word six  */}
+            {/* only allow the word four  */}
             <Form.Text className="text-muted"></Form.Text>
           </Form.Group>
         </Form>
