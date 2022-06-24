@@ -1,30 +1,43 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { Container, Row, Col, Card, Button } from "react-bootstrap";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
 import DrugInfoModal from "../components/DrugInfoModal";
 import axios from "axios";
 
-const getDrugInfo = async () => {
-  let search = "Lasix";
-  try {
-    const res = await axios.get(
-      "https://api.fda.gov/drug/label.json?search=openfda.brand_name:" +
-        search +
-        "&limit=1"
-    );
-    console.log(res.data.results[0]);
-    console.log(res.data.results[0].openfda.generic_name);
-    console.log(res.data.results[0].description[0]);
-    console.log(res.data.results[0].dosage_and_administration[0]);
-    console.log(res.data.results[0].indications_and_usage);
-    return <DrugInfoModal></DrugInfoModal>;
-  } catch (err) {
-    console.log(err);
-  }
-};
-
 const MyPillBox = () => {
+  const [response, setResponse] = useState();
+  useEffect(() => {
+    getDrugInfo();
+  }, []);
+  const getDrugInfo = async () => {
+    let search = "Lasix";
+    try {
+      const res = await axios.get(
+        "https://api.fda.gov/drug/label.json?search=openfda.brand_name:" +
+          search +
+          "&limit=1"
+      );
+
+      // const DrugData = res.data.results[0];
+      // console.log(res.data.results[0]);
+      // console.log(res.data.results[0].openfda.generic_name);
+      // console.log(res.data.results[0].description[0]);
+      // console.log(res.data.results[0].dosage_and_administration[0]);
+      // console.log(res.data.results[0].indications_and_usage);
+      // console.log(DrugData.openfda.generic_name);
+
+      console.log(res.data.results[0].openfda.generic_name);
+      setResponse(res);
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
+  const clickHandler = () => {
+    // getDrugInfo();
+    setResponse(res);
+  };
   return (
     <div>
       <Header></Header>
@@ -47,7 +60,7 @@ const MyPillBox = () => {
                 <Button variant="primary">Mark taken today !</Button>
                 <Card.Text>Last Marked taken at :</Card.Text>
                 <Button variant="primary">
-                  <a onClick={getDrugInfo}>Get Medication information</a>{" "}
+                  <a onClick={clickHandler}>Get Medication information</a>{" "}
                 </Button>
               </Card.Body>
             </Card>
