@@ -6,7 +6,11 @@ import DrugInfoModal from "../components/DrugInfoModal";
 import axios from "axios";
 
 const MyPillBox = () => {
+  const [results, setResults] = useState({});
+  useEffect(() => {}, []);
+
   const getDrugInfo = async () => {
+    setResults();
     let search = "Lasix";
     try {
       const res = await axios.get(
@@ -15,17 +19,23 @@ const MyPillBox = () => {
           "&limit=1"
       );
 
-      const DrugData = res.data.results[0];
+      const results = res.data.results[0];
       // console.log(res.data.results[0]);
       // console.log(res.data.results[0].openfda.generic_name);
       // console.log(res.data.results[0].description[0]);
       // console.log(res.data.results[0].dosage_and_administration[0]);
       // console.log(res.data.results[0].indications_and_usage);
-      console.log(DrugData.openfda.generic_name);
+      console.log(results.openfda.generic_name);
+      setResults(results);
     } catch (err) {
       console.log(err);
     }
   };
+  const onClickHandler = () => {
+    getDrugInfo();
+  };
+  // console.log(results);
+  // console.log(results.openfda.generic_name);
   return (
     <div>
       <Header></Header>
@@ -48,9 +58,14 @@ const MyPillBox = () => {
                 <Button variant="primary">Mark taken today !</Button>
                 <Card.Text>Last Marked taken at :</Card.Text>
 
-                <Button variant="primary" onClick={() => getDrugInfo()}>
+                <Button
+                  variant="primary"
+                  onClick={() => onClickHandler()}
+                ></Button>
+                <DrugInfoModal results={results}>
+                  {" "}
                   Get Medication information
-                </Button>
+                </DrugInfoModal>
               </Card.Body>
             </Card>
           </Col>

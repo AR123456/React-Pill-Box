@@ -2,7 +2,7 @@ import React, { useState } from "react";
 
 import { Button, Modal } from "react-bootstrap";
 
-const DrugInfoModal = () => {
+const DrugInfoModal = (results) => {
   const values = [true, "sm-down", "md-down", "lg-down", "xl-down", "xxl-down"];
   const [fullscreen, setFullscreen] = useState(true);
   const [show, setShow] = useState(false);
@@ -24,7 +24,9 @@ const DrugInfoModal = () => {
         <Modal.Header closeButton>
           <Modal.Title>Modal</Modal.Title>
         </Modal.Header>
-        <Modal.Body>Modal body content</Modal.Body>
+        <Modal.Body>
+          Modal body content{results.results.openfda.generic_name}
+        </Modal.Body>
       </Modal>
     </>
   );
